@@ -55,3 +55,33 @@ def plot_decision_boundary(model: torch.nn.Module, X: torch.Tensor, y: torch.Ten
     plt.scatter(X[:, 0], X[:, 1], c=y, s=40, cmap=plt.cm.RdYlBu)
     plt.xlim(xx.min(), xx.max())
     plt.ylim(yy.min(), yy.max())
+
+
+def plot_loss_curve(results: Dict[str, List[float]]):
+    train_loss  = results["train_loss"]
+    train_acc = results["train_acc"]
+    test_loss = results["test_loss"]
+    test_acc = results["test_acc"]
+
+    epochs = range(len(results['train_loss']))
+
+    # setting up the plot
+    plt.figure(figsize=(15, 7))
+
+    # plot the loss
+    plt.subplot(1, 2, 1)
+    plt.plot(epochs, train_loss, label="train_loss")
+    plt.plot(epochs, test_loss, label="test_loss")
+    plt.title("Loss")
+    plt.xlabel("epochs")
+    plt.ylabel("loss")
+    plt.legend()
+
+    # plot the acc
+    plt.subplot(1, 2, 2)
+    plt.plot(epochs, train_acc, label="train_acc")
+    plt.plot(epochs, test_acc, label="test_acc")
+    plt.title("Accuracy")
+    plt.xlabel("epochs")
+    plt.ylabel("accuracy")
+    plt.legend()
