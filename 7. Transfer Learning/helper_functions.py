@@ -4,7 +4,6 @@ import requests
 import numpy as np
 from torch import nn
 import matplotlib.pyplot as plt
-from typing import Tuple, Dict, List
 
 
 def plot_predictions(train_data, train_labels, test_data, test_labels, predictions=None):
